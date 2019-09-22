@@ -1,0 +1,17 @@
+---
+to: src/components/<%= h.changeCase.pascalCase(name) %>/README.md
+---
+<%_ var Name = h.changeCase.pascalCase(name);_%>
+# `<<%= Name %> />`
+
+DESCRIPTION_HERE
+
+## Example
+
+![<%= Name %>](../../../.loki/reference/chrome_<%= Name %>_default.png)
+
+> Image location: [`.loki/reference/chrome_<%= Name %>_default.png`](../../../.loki/reference/chrome_<%= Name %>_default.png)
+> 
+> To regenerate: 
+> 1. `npm run test:playground` (skip if running)
+> 1. `npm run test:visual:update -- --storiesFilter="^<%= Name %> default\$"`

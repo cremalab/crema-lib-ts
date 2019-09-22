@@ -1,0 +1,13 @@
+---
+to: src/types/<%= h.changeCase.pascalCase(name) %>.ts
+---
+<%_ var nameCap = h.changeCase.pascalCase(name);_%>
+/**
+ * <%= nameCap %>
+ * ------------------------------------------------
+ * DESCRIPTION_HERE
+ */
+
+export interface <%= nameCap %> {
+  // key: ValueType
+}

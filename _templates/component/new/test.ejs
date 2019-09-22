@@ -1,0 +1,58 @@
+---
+to: src/components/<%= h.changeCase.pascalCase(name) %>/test.tsx
+---
+<%_ var Name = h.changeCase.pascalCase(name);_%>
+<% if(useState) { -%>
+import { <%= Name %> } from "."
+import React from "react"
+import { render, fireEvent, cleanup } from "@testing-library/react"
+
+describe("<%= Name %>", () => {
+  beforeEach(cleanup)
+
+  it("has correct message before clicking", () => {
+    // Arrange
+    const name = "Click Me"
+    const message = "You clicked 0 times"
+
+    // Act
+    const { getByText } = render(<<%= Name %> name={name} />)
+
+    // Assert
+    expect(getByText(message)).toBeDefined()
+  })
+
+  it("has correct message after clicking", () => {
+    // Arrange
+    const name = "Click Me"
+    const message = "You clicked 1 times"
+
+    // Act
+    const { getByText } = render(<<%= Name %> name={name} />)
+    const button = getByText(name)
+    fireEvent.click(button)
+
+    // Assert
+    expect(getByText(message)).toBeDefined()
+  })
+})
+<% } else { -%>
+import { <%= Name %> } from "."
+import React from "react"
+import { render, cleanup } from "@testing-library/react"
+
+describe("<%= Name %>", () => {
+  beforeEach(cleanup)
+
+  it("has expected structure", () => {
+    // Arrange
+    const name = "<%= Name %>"
+
+    // Act
+    const { container } = render(<<%= Name %> name={name} />)
+
+    // Assert
+    expect(container).toMatchSnapshot()
+  })
+})
+<% } -%>

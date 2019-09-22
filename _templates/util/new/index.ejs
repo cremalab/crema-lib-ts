@@ -1,0 +1,11 @@
+---
+to: src/utils/<%= h.changeCase.camel(name) %>/index.ts
+---
+<%_ var nameCap = h.changeCase.camel(name);_%>
+/**
+ * <%= nameCap %>
+ * ------------------------------------------------
+ * DESCRIPTION_HERE
+ */
+
+export const <%= nameCap %> = <A>(a: A) => a

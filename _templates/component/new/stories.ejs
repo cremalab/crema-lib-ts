@@ -1,0 +1,11 @@
+---
+to: src/components/<%= h.changeCase.pascalCase(name) %>/stories.tsx
+---
+<%_ var Name = h.changeCase.pascalCase(name);_%>
+import { storiesOf } from "@storybook/react"
+import React from "react"
+import { <%= Name %> } from "."
+
+storiesOf("<%= Name %>", module).add("default", () => (
+  <<%= Name %> name="<%= Name %>" />
+))

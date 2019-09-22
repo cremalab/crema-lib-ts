@@ -1,0 +1,40 @@
+---
+to: src/components/<%= h.changeCase.pascalCase(name) %>/index.tsx
+---
+<%_ var Name = h.changeCase.pascalCase(name);_%>
+<%_ var NameProps = Name + "Props";_%>
+<% if(useState) { -%>
+import React, { useState } from "react"
+
+export type <%= NameProps %> = Readonly<{ name: string }>
+
+/**
+ * <%= Name %>
+ * ------------------------------------------------
+ * DESCRIPTION_HERE
+ */
+
+export function <%= Name %>({ name }: <%= NameProps %>) {
+  const [count, setCount] = useState(0)
+  return (
+    <div className="<%= Name %>">
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>{name}</button>
+    </div>
+  )
+}
+<% } else { -%>
+import React from "react"
+
+export type <%= NameProps %> = Readonly<{ name: string }>
+
+/**
+ * <%= Name %>
+ * ------------------------------------------------
+ * DESCRIPTION_HERE
+ */
+
+export function <%= Name %>({ name }: <%= NameProps %>) {
+  return <div className="<%= Name %>">{name}</div>
+}
+<% } -%>
